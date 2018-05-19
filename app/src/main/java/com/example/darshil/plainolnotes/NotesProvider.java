@@ -2,7 +2,6 @@ package com.example.darshil.plainolnotes;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
-import android.content.IntentFilter;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -21,7 +20,7 @@ public class NotesProvider extends ContentProvider{
     private static final int NOTES = 1;
     private static final int NOTES_ID = 2;
 
-    public static final UriMatcher uriMatcher =
+    private static final UriMatcher uriMatcher =
             new UriMatcher(UriMatcher.NO_MATCH);
 
     public static final String CONTENT_ITEM_TYPE = "Note";

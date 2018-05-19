@@ -11,14 +11,12 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 
@@ -40,11 +38,11 @@ implements LoaderManager.LoaderCallbacks<Cursor>
 //        Cursor cursor = getContentResolver().query(NotesProvider.CONTENT_URI,
 //                DBOpenHelper.ALL_COLUMNS, null, null, null, null);
 
-        String[] from = {DBOpenHelper.NOTE_TEXT};
-        int[] to = {R.id.tvNote};
+//        String[] from = {DBOpenHelper.NOTE_TEXT};
+//        int[] to = {R.id.tvNote};
         cursorAdapter = new NotesCursorAdapter(this, null, 0);
 
-        ListView list = (ListView) findViewById(android.R.id.list);
+        ListView list = findViewById(android.R.id.list);
         list.setAdapter(cursorAdapter);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -67,7 +65,7 @@ implements LoaderManager.LoaderCallbacks<Cursor>
         values.put(DBOpenHelper.NOTE_TEXT, noteText);
         Uri noteUri = getContentResolver().insert(NotesProvider.CONTENT_URI, values);
 
-        Log.d("MainActivity", "Inserted note " + noteUri.getLastPathSegment());
+        assert noteUri != null;
     }
 
     @Override
